@@ -1,0 +1,17 @@
+name: 'checks'
+
+on:
+  pull_request:
+
+jobs:
+  format:
+    uses: ./.github/workflows/_format.yml
+  
+  review:
+    uses: ./.github/workflows/_review.yml
+
+  compile:
+    uses: ./.github/workflows/_compile.yml
+
+  test:
+    uses: ./.github/workflows/_test.yml
