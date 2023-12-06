@@ -1,6 +1,7 @@
 module MainTests exposing (suite)
 
 import Expect
+import I18Next
 import List
 import Main
 import Test exposing (..)
@@ -12,7 +13,7 @@ suite : Test
 suite =
     test "View shows hello world" <|
         \_ ->
-            Main.view ()
+            Main.view { translations = I18Next.initialTranslations }
                 |> .body
                 |> List.head
                 |> (\maybeHtml ->
@@ -22,5 +23,5 @@ suite =
 
                             Just html ->
                                 Query.fromHtml html
-                                    |> Query.has [ text "Hello world!" ]
+                                    |> Query.has [ text "helloWorld" ]
                    )

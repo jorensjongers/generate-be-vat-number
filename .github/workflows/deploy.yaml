@@ -42,7 +42,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Compile production build
-        run: yarn compile:prod --output=out/index.html
+        run: yarn compile --optimize
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v1
