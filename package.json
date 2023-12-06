@@ -9,14 +9,16 @@
     "url": "https://jorensjongers.be"
   },
   "scripts": {
-    "start": "elm-live src/Main.elm --dir=dist --open -- --output=dist/index.html",
+    "copy-translations": "mkdir -p out && cp -r public/i18n out",
+    "prestart": "yarn copy-translations",
+    "start": "elm-live src/Main.elm --dir=out --open -- --output=out/index.html",
     "format": "elm-format . --validate",
     "format:fix": "elm-format . --yes",
     "review": "elm-review",
     "review:fix": "elm-review --fix",
     "test": "elm-test 'src/**/*Tests.elm'",
-    "compile": "elm make src/Main.elm --output=/dev/null",
-    "compile:prod": "elm make src/Main.elm --optimize"
+    "precompile": "yarn copy-translations",
+    "compile": "mkdir -p out && cp -r public/i18n out && elm make src/Main.elm --output=out/index.html"
   },
   "devDependencies": {
     "elm": "^0.19.1-6",
